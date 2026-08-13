@@ -6,9 +6,9 @@ function LikeCounter() {
   const [notes, setNotes] = useState([]);
 
   async function getMessage() {
-    const response = await fetch("http://127.0.0.1:8000/message");
+    const response = await fetch("http://askmynotes1-1.onerender.com/notes");
     const data = await response.json();
-    setMessage(data.message);
+    setMessage(data.notes);
   }
 
   async function getNotes() {
