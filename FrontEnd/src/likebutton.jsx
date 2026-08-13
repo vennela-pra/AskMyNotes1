@@ -3,11 +3,18 @@ import { useState } from "react";
 function LikeCounter() {
   const [likes, setLikes] = useState(0);
   const [message, setMessage] = useState("");
+  const [notes, setNotes] = useState([]);
 
   async function getMessage() {
     const response = await fetch("http://127.0.0.1:8000/message");
     const data = await response.json();
     setMessage(data.message);
+  }
+
+  async function getNotes() {
+    const response = await fetch("http://127.0.0.1:8000/notes");
+    const data = await response.json();
+    setNotes(data.notes);
   }
 
   function handleLike() {
@@ -40,6 +47,16 @@ function LikeCounter() {
       <button onClick={getMessage}>Get Backend Message</button>
 
       <p>{message}</p>
+
+      <br />
+
+      <button onClick={getNotes}>Get My Notes</button>
+
+      <ul>
+        {notes.map((note, index) => (
+          <li key={index}>{note}</li>
+        ))}
+      </ul>
     </div>
   );
 }

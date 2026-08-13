@@ -18,3 +18,12 @@ def home():
 @app.get("/message")
 def get_message():
     return {"message": "Hello from FastAPI!"}
+
+@app.get("/notes")
+def get_notes():
+    return {
+        "notes": [
+            "Welcome to AskMyNotes!",
+            "This is your first note."
+        ]
+    }
