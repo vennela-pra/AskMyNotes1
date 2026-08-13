@@ -14,3 +14,7 @@ app.add_middleware(
 @app.get("/")
 def home():
     return {"message": "Hello from FastAPI Backend!"}
+
+@app.get("/message")
+def get_message():
+    return {"message": "Hello from FastAPI!"}
